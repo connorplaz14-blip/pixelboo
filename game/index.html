@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>PixelBoo Kong</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    background: #000;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+    font-family: 'Press Start 2P', monospace;
+  }
+  #wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    position: relative;
+  }
+  canvas {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    display: block;
+  }
+  #mobile-controls {
+    display: none;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    height: 170px;
+    z-index: 100;
+    pointer-events: none;
+  }
+  .ctrl-btn {
+    position: absolute;
+    width: 60px; height: 60px;
+    background: rgba(255,255,255,0.10);
+    border: 3px solid rgba(255,255,255,0.22);
+    display: flex; align-items: center; justify-content: center;
+    pointer-events: all;
+    font-size: 22px;
+    color: rgba(255,255,255,0.45);
+  }
+  .ctrl-btn:active, .ctrl-btn.pressed {
+    background: rgba(255,255,255,0.28);
+    border-color: rgba(255,255,255,0.5);
+  }
+  #btn-left   { bottom: 40px; left: 16px; }
+  #btn-right  { bottom: 40px; left: 96px; }
+  #btn-up     { bottom: 100px; left: 56px; }
+  #btn-down   { bottom: 0px; left: 56px; font-size: 18px; }
+  #btn-jump   { bottom: 50px; right: 20px; width: 76px; height: 76px; font-size: 11px; }
+  @media (pointer: coarse) { #mobile-controls { display: block; } }
+</style>
+</head>
+<body>
+<div id="wrapper"><canvas id="game"></canvas></div>
+<div id="mobile-controls">
+  <div class="ctrl-btn" id="btn-left">◀</div>
+  <div class="ctrl-btn" id="btn-right">▶</div>
+  <div class="ctrl-btn" id="btn-up">▲</div>
+  <div class="ctrl-btn" id="btn-down">▼</div>
+  <div class="ctrl-btn" id="btn-jump">JUMP</div>
+</div>
+<script src="game-engine.js"></script>
+</body>
+</html>
